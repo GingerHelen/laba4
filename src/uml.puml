@@ -1,0 +1,207 @@
+@startuml
+package "story" {
+ class Main {
+ +static void main(String[] agrs)
+ }
+}
+package "heroes" {
+abstract class Hero {
+-String name
+-Place location
++String getName()
++void setLocation(Place location)
++void farewell(Hero hero1, Hero hero2)
++void meeting(Hero hero1, Hero hero2)
++String helping(Hero hero1, Hero hero2)
++boolean equals(Object o)
++String toString()
++int hashCode()
++void activity(Place location, String activity)
++String talkAbout(String subjectOfTalking, Hero hero) throws NullStringException
++String startedWalking (Place location)
+}
+class ChristopherRobbin {
+-String name
+-ChristopherRobbin(Place location)
++void putsOnBoots(Hero ownerOfTheBoots)
++void resultOfPuttingOn(boolean isResult)
++void heard(SomethingYouCanHeard thing)
++String tryToPut()
+}
+class Kenga {
+-String name
+-Kenga(Place location)
++String toString()
++boolean equals(Object o)
++int hashCode()
+}
+class BabyRoo {
+-String name
+-BabyRoo(Place location)
+-String toString()
++boolean equals(Object o)
++int hashCode()
+}
+class Piglet {
+-String name
+-Piglet(Place location)
++String pigletHopes(Hero hero)
++String pigletForget()
++void pigletActivity(Place location, String activity)
++String pigletWonders()
++String toString()
++boolean equals(Object o)
++int hashCode()
+}
+class Rabbit {
+-String name
+-Rabbit(Place location)
++String toString()
++boolean equals(Object o)
++int hashCode()
+}
+class Winnie {
+-String name
+-Winnie(Place location)
++String winnieAdvent()
++String winnieRun(Place location)
++String toString()
++boolean equals(Object o)
++int hashCode()
+}
+}
+Hero <|- Piglet
+Hero <|- Rabbit
+Hero <|- Winnie
+Hero <|- ChristopherRobbin
+Hero <|- Kenga
+Hero <|- BabyRoo
+package "heroesSkills" {
+interface FairyCreature {
++String getName()
++void setLocation(Place location)
++void farewell(Hero hero1, Hero hero2)
++void meeting(Hero hero1, Hero hero2)
++String helping(Hero hero1, Hero hero2)
++void activity(Place location, String activity)
++String talkAbout(String subjectOfTalking, Hero hero) throws NullStringException
++String startedWalking(Place location)
+}
+interface PigletSkills extends FairyCreature{
++String pigletForget()
++String pigletHopes(Hero hero)
++String pigletWonders()
+}
+interface WinnieSkills extends FairyCreature{
++String winnieAdvent()
++String winnieRun(Place location, TypesOfWalking walk)
++void heard(SomethingYouCanHeard thing)
++String winnieLikes()
++String winnieNotUnderstand()
++String think(String thought) throws NullStringException
++String winnieSee(String subject)
+}
+interface ChristopherRobbinsSkills extends FairyCreature{
++void putsOnBoots(Hero ownerOfTheBoots)
++void heard(SomethingYouCanHeard thing)
+}
+}
+package "chamomile" {
+ interface FortuneTellingOnChamomile {
+ +void resultOfChamomile(PossibleOutcomesOfChamomile result)
+ +void allVariants()
+ }
+ class Chamomile implements FortuneTellingOnChamomile {
+ -String name
+ -int maxOutcomesOfChamomile
+ +void resultOfChamomile(PossibleOutcomesOfChamomile result)
+ +void allVariants()
+ +String toString()
+ +boolean equals(Object o)
+ +int hashCode()
+ }
+}
+
+package "enums" {
+enum Place {
+GROUND("на земле")
+PIGLETHOUSE("дому Пятачка")
+WINNIEHOUSE("дому Винни-Пуха")
+RABBITHOUSE("дому Кролика")
+CRISTOPHERHOUSE("Дому Кристофера Роббинса")
+-String seat
++Place(String seat)
++String toString()
+}
+enum PossibleOutcomesOfChamomile {
+ LOVE("любит")
+ NOLOVE("не любит")
+ SPIT("плюнет")
+ KISS("поцелует")
+ -String outcome
+ +PossibleOutcomesOfChamomile(String outcome)
+ +String toString()
+ }
+enum TypesOfWalking {
+ WALK("шагая"),
+ RUN(" бежит"),
+ CONTINUE(" продолжает путь")
+ -String typeOfWalking
+ +TypesOfWalking(String typeOfWalking)
+ +String toString()
+}
+}
+package "heroThings" {
+ class Expedition {
+ -String name
+ -boolean isStarting
+ +String getName()
+ +void groupIsAssembled()
+ +void groupIsNotAssembled()
+ +void startOrWait(boolean isStarting)
++String getCondition()
++void firstMembers(Hero hero1, Hero hero2)
++secondMembers(Hero hero1, Hero hero2)
++thirdMembers(Hero hero1, Hero hero2)
+ }
+
+ abstract class SomethingYouCanHeard {
+ -String name
+ -Hero owner
+ -boolean isHeard
+ +void setHeardValue(boolean isHeard)
+ +String getCondition()
+ +String getOwner(String phrase)
+ +String getMovement()
+ }
+ class Song extends SomethingYouCanHeard{
+ -String name
+ +String getMovement()
+ +String getOwner(Hero owner, String phrase)
+ }
+}
+package "exceptions" {
+ class Exception {}
+ class NullStringException extends Exception{
+ -String message
+ +NullStringException(String message)
+ +void printException()}
+ }
+ class RuntimeException {}
+ class BootsNotWearExceptions extends RuntimeException{
+ -String message
+ +BootsNotWearExceptions(String message)
+ }
+ class GroupNotAssembledExceptions extends RuntimeException {
+ -String message
+ +GroupNotAssembledExceptions(String message)
+ }
+}
+Class Piglet implements PigletSkills
+Class Winnie implements WinnieSkills
+Class Kenga implements FairyCreature
+Class BabyRoo implements FairyCreature
+Class Rabbit implements FairyCreature
+Class ChristopherRobbin implements ChristopherRobbinsSkills
+Abstract Class Hero implements FairyCreature
+@enduml
